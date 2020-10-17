@@ -103,6 +103,10 @@ start_ticks = pygame.time.get_ticks() # 현재 tick을 받아옴
 
 game_result = "Game over"
 
+
+#게임 레벨 시스템을 추가해준다.
+level_system = 'Level 1'
+
 # 게임 작동을 위한 코드(기본 공식이라 생각하면 된다.)
 running = True
 while running:
