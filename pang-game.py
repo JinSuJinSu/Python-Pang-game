@@ -244,7 +244,7 @@ while running:
 
 
 
-        # 배경, 적, 캐릭터 그리기
+        # 배경, 적, 캐릭터 그리기 함수
     screen.blit(background, (0,0))
    
 
