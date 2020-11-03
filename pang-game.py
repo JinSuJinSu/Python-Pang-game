@@ -18,7 +18,7 @@ pygame.display.set_caption("pang game")
 clock = pygame.time.Clock()
 
 
-#이미지 경로 설정(1)
+#이미지 경로 설정
 current_path = os.path.dirname(__file__)  #현재 파일의 위치 반환
 image_path = os.path.join(current_path, "game_images") #images 폴더 위치 반환
 
@@ -93,8 +93,7 @@ game_font = pygame.font.Font(None, 40)
 # 총 시간
 total_time = 50
 
-# 시작 시간 정보
-start_ticks = pygame.time.get_ticks() # 현재 tick을 받아옴
+
 
 #게임 종료 메시지
 #Time out(시간 초과)
@@ -103,9 +102,6 @@ start_ticks = pygame.time.get_ticks() # 현재 tick을 받아옴
 
 game_result = "Game over"
 
-
-#게임 레벨 시스템을 추가해준다.
-level_system = 'Level 1'
 
 # 게임 작동을 위한 코드(기본 공식이라 생각하면 된다.)
 running = True
@@ -205,7 +201,7 @@ while running:
             weapon_rect.left = weapon_pos_x
             weapon_rect.top = weapon_pos_y
 
-            #충돌 체크
+            #공과 무기의 충돌 체크
             if weapon_rect.colliderect(ball_rect):
                weapon_to_remove = weapon_idx
                ball_to_remove = ball_idx
@@ -227,7 +223,7 @@ while running:
             continue
         break
 
-    #충돌된 무기와 공을 없애버리자
+    #충돌된 무기와 공을 없앤다.
 
     if weapon_to_remove > -1:
         del weapons[weapon_to_remove]
@@ -244,7 +240,7 @@ while running:
 
 
 
-        # 배경, 적, 캐릭터 그리기 함수
+    # 배경, 적, 캐릭터 그리기 함수
     screen.blit(background, (0,0))
    
 
@@ -266,10 +262,10 @@ while running:
     #타이머 집어 넣기
     #경과 시간(기존 이미지 전부 넣고 후에 추가로 넣어야 충돌 안생긴다.)
 
-    elapsed_time = (pygame.time.get_ticks() - start_ticks) / 1000 # 경과시간을 1000으로 나눠서 초 단위로 표시
+    elapsed_time = pygame.time.get_ticks() / 1000 # 경과시간을 1000으로 나눠서 초 단위로 표시
     timer = game_font.render(str(int(total_time - elapsed_time)), True, (255, 255, 255))
 
-    #출력할 글자, True, 글자 생성
+    #타이머 화면에 표시
     screen.blit(timer, (10,10))
 
     #시간이 0이하일 경우 게임을 종료한다
